@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+.vercel/
+node_modules/
+*.log
+.DS_Store
+.sites-runtime/
+
+.openai/
+*.zip
