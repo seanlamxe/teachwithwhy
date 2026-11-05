@@ -1,63 +1,60 @@
-# GitHub → Vercel deployment
+# TeachWithWhy 0.4 — GitHub → Vercel
 
-## 1. Publish the clean project source to GitHub
+## Publish the prepared revision
 
-Create a public repository named `teachwithwhy` (or another available name) in your own GitHub account. Upload the clean source export, including `api`, `lib`, `dist`, `docs`, `scripts`, `tests`, `package.json`, `vercel.json`, `.gitignore`, and `.env.example`.
+The existing project is `teachwithwhy` in Vercel team `sean-2e37`, connected to `seanlamxe/teachwithwhy` on GitHub. Publishing to its connected `main` branch triggers an automatic production deployment.
 
-Exclude `.git`, `.openai`, `.vercel`, `.env.local`, actual credentials, test downloads, user backups, archives and local runtime state. The clean export contains no real API key and does not include the private Sites repository identity.
+Use the clean source archive or review the branch before pushing. Include `.env.example`, `.gitignore`, `api`, `lib`, `dist`, `docs`, `scripts`, `tests`, `package.json` and `vercel.json`. Exclude private keys, user backups, `.git`, `.openai`, `.vercel` and `.env.local`.
 
-Do not commit a model key and later delete it: Git history can retain it. Configure secrets only through Vercel’s environment-variable settings.
+Keep the Vercel build settings: Other framework; Node.js 22; build command `npm run build`; output directory `dist`. `api/index.js` handles `/api/*` through the existing rewrite.
 
-## 2. Import the repository into Vercel
+## Connect AI without teacher setup
 
-Use **Add New → Project → Import Git Repository** and select the GitHub repository. Keep:
-
-- Framework preset: Other.
-- Node.js: 22.x.
-- Build command: `npm run build`.
-- Output directory: `dist`.
-- API function: `api/index.js` with rewrites from `vercel.json`.
-
-Only proceed with a free plan or an existing authorised plan. Do not accept unrequested paid upgrades.
-
-## 3. Configure private environment variables
+Recommended configuration:
 
 ```text
-AI_PROVIDER=deepseek
-DEEPSEEK_API_KEY=<a funded DeepSeek API key>
-DEEPSEEK_MODEL=deepseek-flash
-APP_ACCESS_CODE=<a unique private pilot code, at least 12 characters>
+AI_PROVIDER=auto
+AI_ENABLED=true
+AI_GATEWAY_MODEL=deepseek/deepseek-v4.1-flash-1017
 AI_LIVE_SEARCH=true
-AI_MAX_REQUESTS_PER_HOUR=20
+AI_MAX_REQUESTS_PER_HOUR=5
+AI_MAX_TOTAL_REQUESTS_PER_HOUR=60
 ```
 
-Apply secrets to the intended environment (Production, and Preview only if desired). Use the platform’s sensitive-value settings where available. Do not print keys in logs or screenshots. Redeploy after changing environment variables.
+Vercel AI Gateway can authenticate with the project's runtime OIDC identity, avoiding a separate provider key. Confirm that this is available for the actual project. If it is not, the owner can configure `AI_GATEWAY_API_KEY` privately. A direct DeepSeek or OpenAI key is also supported. Do not send credentials in chat or commit them to GitHub.
 
-Without an API key, credit and pilot code, the site can still demonstrate samples and documentation but cannot truthfully be described as operational live AI.
+Remove the old forced `AI_PROVIDER=deepseek` if there is no valid DeepSeek key and you want Gateway. No teacher trial code is required; `APP_ACCESS_CODE` is ignored in v0.4.
 
-## 4. Verify the deployment
+Gateway mode reads the fixed reviewed EEF pages live before generating. It does not search the whole web. Direct-provider modes retain web search. `AI_LIVE_SEARCH=false` explicitly selects curated summaries only; the UI and results reflect that.
 
-1. Open the actual returned Vercel domain, and switch language in the header at the same URL.
-2. Check English labels, user guide and error states, not just page headings.
-3. Open `/api/status`; expect `configured: true` only when the server key and sufficiently long pilot code are present. This status does not test the key’s validity.
-4. Enter the pilot code in About & connection.
-5. Use a fictional classroom example, enable consent and generate an activity.
-6. Verify actual provider success, generation time, retrieved sources, and citation handling.
-7. Test save, print, export and restore in both locales.
-8. Check provider spend controls before sharing paid access more widely.
+## Check the account credit first
 
-In-memory request limiting is not a distributed spend cap. Keep the paid endpoint pilot-code-protected until durable access controls and quotas are in place.
+Teachers use all current features free of charge. AI consumes provider credit. Check Gateway free-tier eligibility, remaining credit and model access in the Vercel account. Do not buy credits, change plan or enable automatic top-up unless the owner chooses to. If the account already has top-ups or paid usage enabled, the app cannot independently guarantee a zero bill.
 
-## 5. Public portfolio links
+The code's counters are per instance and are not durable site-wide spend caps. Set provider budgets before public use. `AI_ENABLED=false` disables AI while leaving the rest of the site usable.
 
-Share the actual public GitHub repository URL and the single verified Vercel URL, which supports both interface languages. Do not substitute a private Sites link for a Vercel deployment, and do not invent URLs before they have been created.
+## Verify after deployment
 
-## 中文簡明步驟
+1. Confirm Vercel shows Ready for the intended commit.
+2. Open the production URL without signing in, and switch language in place.
+3. The homepage should directly show the activity form. Enter a topic and use an optional quick-fill need; there should be no library or mandatory comparison page.
+4. Open `/api/status`: `accessCodeRequired` is false. `configured` only means authentication is present, not that a real model request passed.
+5. Use a fictional classroom example, consent, and generate once. Check actual provider success, model, timestamp and live-source mode. A learning goal, teacher prompts, pupil task and quick check must be present. No teacher code should be requested.
+6. Check credit and usage-limit errors. Blocked source pages must be labelled as unsuccessful live retrieval while AI uses reviewed summaries; samples remain available.
+7. Edit the prompts, copy the activity, save, export/import an old backup and print in both languages. Research notes should be collapsed until requested.
 
-1. 在自己的 GitHub 建立公開儲存庫，上傳乾淨原始碼。
-2. 在 Vercel 匯入該儲存庫，套用專案內的 `vercel.json`。
-3. 在私密環境變量填入 DeepSeek API 密鑰及試用碼；不要在聊天或 GitHub 貼密鑰。
-4. 重新部署，使用虛構課堂資料實測 AI 與聯網來源。
-5. 分享已驗證的單一 Vercel 網址（站內切換中英文）及 GitHub 網址。
+The local automated checks use mock model responses. A live call has not been verified until the deployed request succeeds.
 
-GitHub／Vercel 登入授權、模型帳戶與有效密鑰必須由帳戶持有人提供。API 開放權重不代表託管服務免費。
+## 香港中文簡明步驟
+
+1. 由你把新版原始碼更新到 GitHub，再讓現有 Vercel 項目部署。
+2. 選用 `AI_PROVIDER=auto`，優先確認 Vercel 項目身分認證及 AI Gateway 免費額度。
+3. 教師毋須註冊、密鑰或試用碼。若身分認證不可用，只需網站管理員一次設定伺服器端密鑰。
+4. 先用虛構課堂資料實測一次 AI，再分享網址。
+5. 免費供教師使用不代表無限 AI。額度用盡時暫停生成，其他功能照常使用。
+
+## API Key route / 使用 API Key
+
+For the simplest owner-configured route, set `AI_PROVIDER=deepseek` and `DEEPSEEK_API_KEY` in Vercel’s private production environment variables, then deploy. Keep the value secret. Visitors do not supply a key or a code. A valid provider balance is still required. OpenAI uses `AI_PROVIDER=openai` plus `OPENAI_API_KEY`; Gateway uses `AI_PROVIDER=gateway` plus `AI_GATEWAY_API_KEY`. See [API contract](api.md).
+
+最直接的方式是在 Vercel 私密環境變量設定 `AI_PROVIDER=deepseek` 及 `DEEPSEEK_API_KEY`，再部署。管理員設定一次，教師便可直接使用；不在前台收集密鑰。模型帳戶仍須有可用額度。
