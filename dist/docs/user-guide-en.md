@@ -1,97 +1,43 @@
-# TeachWithWhy — User Guide
+# TeachWithWhy · 教得有據 — User Guide
 
-Version 0.2 · 2026-11-03 · Designed primarily for desktop use
+Version 0.4 · Hong Kong primary and secondary teachers · Designed primarily for desktop
 
-## What does it do?
+## Three steps from topic to activity
 
-Start with a classroom participation or discussion challenge, understand the evidence behind a teaching strategy, adapt an activity to practical constraints, and return with observations. The tool covers lower and upper primary, junior secondary and senior secondary in Hong Kong.
+1. **Describe the lesson:** the homepage is the form. Complete the visible fields for year group, subject, class size, time, topic, prior learning and difficulties, and an observable learning goal. Choose support needs. These original questions are retained.
+2. **Generate and adapt:** confirm there are no pupil-identifying details and consent to AI processing, then generate directly. No library browsing or strategy comparison is required.
+3. **Use the activity:** check and edit the text, copy it into your lesson plan, print/save as PDF, or save it. Reflection is optional.
 
-## Start in three minutes
+All current features are free to teachers. No account, trial code or personal model key is needed. The site owner connects the model once; service credit and usage limits apply.
 
-1. Open the single website URL. Use the top-right English / 繁體中文 button to switch in place without changing the URL. Your browser remembers the language choice.
-2. Choose a scenario on the workspace or select **New activity**.
-3. Enter the year group, subject, class size, activity length, topic, challenge and goal.
-4. Select practical constraints: keeping seats in place, no electronic devices, or language support.
-5. Compare strategies. Read each source’s findings, scope and limitations.
-6. Try **View a rule-based sample** first. On an enabled deployment, choose **Design with live AI**.
-7. Edit the steps and notes, then **Save activity** or **Print / save as PDF**.
-8. After teaching, open **My teaching trials → Classroom reflection** and record observations, difficulties and next steps.
+## What is included?
 
-## Upper-primary example
+Your original learning goal, a rationale linking the task to it, a readiness check, timed sequence, teacher questions and sentence frames, a pupil task, a goal-aligned check for understanding, a manageable recording method, and editable criteria for retaining, adapting or changing the approach. Materials, support and expandable research notes are included. These are drafts requiring teacher review. The current focus is participation, discussion and explaining ideas, rather than a complete school curriculum system.
 
-- Year group: upper primary; subject: language; class size: 30; activity: 12 minutes.
-- Topic: a character’s choices.
-- Challenge: a few pupils dominate answers.
-- Goal: each pupil prepares an idea and a reason for the character’s choice.
-- Strategy: Think, then share.
-- Support: keywords, drawings or rehearsal with a partner.
+## Worked example
 
-Observe whether pupils prepared their own ideas and offered reasons, rather than only recording that the atmosphere was positive.
+Choose Upper primary and Chinese language, enter a story-character topic and 12 minutes, describe the pupils’ prior learning and difficulty, then enter an observable goal. After generation, the teacher may adapt a question to ask which action supports a view of a character, then use a one-sentence exit response to check each pupil’s reasoning.
 
-## Junior-secondary example
+This describes the workflow; it is not proof of an actual API generation or an evaluated classroom intervention.
 
-- Year group: junior secondary; subject: science; class size: 32; activity: 15 minutes.
-- Topic: comparing two scientific explanations.
-- Goal: compare evidence and identify remaining uncertainty.
-- Strategy: Give an idea and a reason.
-- Preparation: provide teacher-checked phenomena or source materials.
+## Where is the research?
 
-Lower-primary pupils may use pointing, drawings or short sentences. Senior-secondary activities may compare assumptions, counterexamples and evidence. Year group does not determine an individual pupil’s needs.
+There is no separate static library. Expand Why this approach? inside an activity. It separates the supported finding, the proposed classroom adaptation and its limitations, with a source link. A source review does not validate the particular generated activity.
 
-## Samples versus real AI
+## AI and samples
 
-**Rule-based samples** use fixed strategies and rules for age and timing. They make no model calls and are explicitly labelled as samples.
+Explore a sample uses fixed rules, is labelled as not AI output, and consumes no model credit. Genuine AI outputs identify the model, time and source mode. AI needs usable server authentication and account credit.
 
-**Live AI** runs through the website backend. DeepSeek mode calls its Search API, filters sources and asks the model to adapt an activity. The optional OpenAI mode uses Responses API web search and labels title-only discoveries as metadata pointers. Teachers must still review every output.
+Direct DeepSeek/OpenAI modes can search the web. Gateway mode attempts live retrieval of the curated research pages. If those pages block retrieval, generation uses reviewed summaries and explicitly marks live retrieval as unsuccessful. Credit and model failures are shown honestly; samples never masquerade as AI output.
 
-Completed AI activities identify the model, generation time and retrieval status. A failed call shows an error; it is never silently replaced with a template presented as AI.
+## Records, language and privacy
 
-Live search does not guarantee newly published or well-matched research on every request. Titles, snippets, summaries and full texts provide different levels of evidence. The output is not a systematic review or a validated intervention.
+Saved activities supports reopening, reflection and backup downloads. Records stay in this browser without cross-device sync. Old-name backups are accepted. Domains do not share storage; import your backup when moving domains. Deleting an activity also deletes its reflection.
 
-## Using AI
+Switch interface language at the same URL. Saved original activity text is not automatically translated.
 
-1. Check the service status in the top bar.
-2. Once the owner has configured the service, obtain a teacher pilot code.
-3. Enter it in **About & connection**. This is not a model API key.
-4. Confirm the data-processing consent option in classroom settings.
-5. Choose **Design with live AI** and wait for retrieval and generation.
-6. Review sources, content and timing before using the activity.
+Do not include pupil names, contact details or diagnostic reports. AI processes the content you consent to send; reflection analysis asks for separate confirmation. Provider data policies apply. The owner configures credentials privately, not through a teacher-facing field. Free teacher access does not mean unlimited free inference; account credit and provider budgets must be checked.
 
-When AI is not configured, samples, editing, browser storage, printing and reflections remain available. A configured status is not a successful live connection test.
+## Pedagogical design
 
-## What is sent to external services?
-
-AI mode sends the submitted class context, challenge and goal to the configured model. Reflection AI additionally sends the reflection you choose to submit, after confirmation. Search uses a general educational query without requiring pupil identities.
-
-Do not enter pupil names, contact information, diagnostic reports or other identifying details. Check your institution’s requirements and provider data terms before formal use. Provider retention policies apply separately.
-
-## Save, print and back up
-
-- Records stay in this browser; they do not automatically sync across devices.
-- Clearing browser data, private browsing or restricted storage can prevent records from persisting.
-- **Print / save as PDF** opens the browser’s print dialog. Select its PDF destination.
-- **My teaching trials** supports JSON export and import. Existing IDs are retained rather than silently overwritten.
-- Deleting an activity also deletes its reflection. This cannot be undone within the app; download a backup first.
-- Switching the interface language does not translate saved original content. Create a new activity for another output language.
-
-## Troubleshooting
-
-**AI not configured:** the owner needs a valid API key, available provider credit and a pilot code, followed by redeployment.
-
-**Invalid pilot code:** re-enter the owner-provided code. It is held only for the current browser session.
-
-**Invalid output or citation:** the result was not accepted. Try again later and verify any source before relying on it.
-
-**Slow generation:** retrieval and reasoning take time. A timeout is shown explicitly. Repeated requests may incur additional provider charges; check the previous request’s status first.
-
-**Does this prove learning gains?** No. A local observation does not establish causality or measure all learning outcomes.
-
-## Site owners
-
-See `README.md` and `docs/deployment.md` in the project. Store API keys only in private server-side environment variables, never in public GitHub, browser code or this guide. Hosted APIs are billed; open model weights do not make hosted inference free.
-
-Official references: [DeepSeek API](https://api-docs.deepseek.com/) and [Search & Fetch](https://api-docs.deepseek.com/guides/search/).
-
-## Renaming and existing records
-
-The product is now TeachWithWhy · 教得有據. Backups from the previous product name are accepted. Existing browser records are read when updating at the same address. A new domain has separate browser storage: export at the old address and import at the new one.
+Begin with the intended learning goal, decide what pupil work will show understanding, then plan the sequence and scaffolds. The AI preserves the teacher’s stated goal. Overly broad goals should be flagged rather than silently replaced. Reflection shows the planned decision criteria; these are suggestions, not validated cut-offs. Participation is not proof of understanding and one observation does not establish impact. The feedback-and-adaptation approach references [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html); it does not imply endorsement.
