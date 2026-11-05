@@ -1,11 +1,11 @@
 # TeachWithWhy · 教得有據
 
-A free, bilingual teaching-design workspace for Hong Kong primary and secondary teachers. Start with a classroom challenge, compare evidence-informed strategies, adapt an activity and reflect after teaching.
+A free, bilingual teaching-design workspace for Hong Kong primary and secondary teachers. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
 
 ## Version 0.4
 
-- The homepage is the working form: year group, subject, topic and time. Extra class settings are optional. Generate directly without a mandatory strategy-comparison step.
-- A draft contains a timed sequence, teacher prompts, a pupil task and a quick learning check. Teachers can edit, copy, print and save it.
+- The homepage is the working form: year group, subject, topic, time, class size, prior learning/difficulties, goal and support. Original context questions stay visible. Generate directly without a mandatory strategy-comparison step.
+- A draft preserves the teacher’s goal and contains its alignment rationale, a readiness check, timed sequence, teacher prompts, a pupil task, a goal-aligned formative check, a recording method and editable keep/adapt/change criteria. Teachers can edit, copy, print and save it.
 - Only Design an activity and Saved activities are in the main navigation. Research findings, their classroom adaptation and limitations are expandable inside each output; there is no standalone static library.
 - Free teacher access without accounts, subscriptions, API keys or pilot codes. The owner configures a provider once.
 - DeepSeek through Vercel AI Gateway, with project identity authentication where available; direct DeepSeek and OpenAI integrations remain supported.
@@ -66,6 +66,7 @@ Follow [deployment instructions](docs/deployment.md). The clean source export ex
 - [Vercel runtime OIDC](https://vercel.com/docs/oidc)
 - [Gateway credit and pricing](https://vercel.com/docs/ai-gateway/pricing)
 - [DeepSeek V4.1 Flash on Gateway](https://vercel.com/changelog/deepseek-v4-1-flash-now-available-on-ai-gateway)
+- [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html)
 - [EEF collaborative learning](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/collaborative-learning-approaches)
 - [EEF oral language interventions](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/oral-language-interventions)
 
