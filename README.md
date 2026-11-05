@@ -12,7 +12,7 @@ A free, bilingual teaching-design workspace for Hong Kong primary and secondary 
 - Gateway mode retrieves the fixed reviewed EEF pages live. Direct-provider modes use web search. Source type, limitations and actual AI generation metadata are explicit.
 - Browser-local records, PDF printing, bilingual guides and old-backup compatibility.
 
-**Verification:** provider contracts, consent, limits, error handling and retrieval are covered by tests with mock model responses. A real model call still requires deployment and available account credit. Do not describe an untested configuration as verified live AI.
+**Verification:** provider contracts, consent, limits, error handling and retrieval are covered by tests with mock model responses. Production smoke check on 2026-11-05 successfully generated a Chinese-language, P5, 30-pupil, 12-minute activity using DeepSeek Flash and live search (one accepted source), with fictional class data. This verifies connectivity and output handling, not classroom effectiveness or general model quality. Account credit is still required.
 
 ## Run and check
 
