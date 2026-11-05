@@ -1,86 +1,73 @@
 # TeachWithWhy · 教得有據
 
-A desktop-first, bilingual teaching-design tool for Hong Kong primary and secondary educators. Explore evidence, adapt an activity, and return with classroom observations.
+A free, bilingual teaching-design workspace for Hong Kong primary and secondary teachers. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
 
-**Status:** working bilingual UI, built-in and downloadable user guides, rule-based samples, browser storage and backup restore, and server-side DeepSeek/OpenAI integration code. Real paid-provider calls require the owner’s API key and credit. Do not describe an unconfigured deployment as a live AI service.
+## Version 0.4
 
-## Brand and migration
+- The homepage is the working form: year group, subject, topic, time, class size, prior learning/difficulties, goal and support. Original context questions stay visible. Generate directly without a mandatory strategy-comparison step.
+- A draft preserves the teacher’s goal and contains its alignment rationale, a readiness check, timed sequence, teacher prompts, a pupil task, a goal-aligned formative check, a recording method and editable keep/adapt/change criteria. Teachers can edit, copy, print and save it.
+- Only Design an activity and Saved activities are in the main navigation. Research findings, their classroom adaptation and limitations are expandable inside each output; there is no standalone static library.
+- Free teacher access without accounts, subscriptions, API keys or pilot codes. The owner configures a provider once.
+- DeepSeek through Vercel AI Gateway, with project identity authentication where available; direct DeepSeek and OpenAI integrations remain supported.
+- Gateway mode retrieves the fixed reviewed EEF pages live. Direct-provider modes use web search. Source type, limitations and actual AI generation metadata are explicit.
+- Browser-local records, PDF printing, bilingual guides and old-backup compatibility.
 
-**TeachWithWhy · 教得有據** connects education research, a small classroom trial and teacher reflection. The interface uses Hong Kong Traditional Chinese and natural Cantonese classroom prompts. Existing records and language preferences in this browser, and backups exported under the previous product name, remain readable. Changing the website domain creates a new browser storage origin: export records from the old address and import them at the new address.
+**Verification:** provider contracts, consent, limits, error handling and retrieval are covered by tests with mock model responses. A real model call still requires deployment and available account credit. Do not describe an untested configuration as verified live AI.
 
-## Routes
+## Run and check
 
-- `/`: one shared website URL with in-place Traditional Chinese / English switching. The URL does not change and the browser remembers the language.
-- `/zh/` and `/en/` remain compatibility entry points and normalise to `/`.
-- User guide: choose **User guide / 使用說明** in the sidebar; Markdown downloads are under `/docs/`.
-- `/api/status`: safe configuration status.
-- `/api/ai`: authenticated planning / reflection endpoint.
-
-## Run locally
-
-Use Node.js 22. The project has no external runtime dependencies.
+Node.js 22; no external runtime dependencies.
 
 ```sh
 cp .env.example .env.local
-# Fill private values in .env.local using your own editor.
 npm run build
+npm test
 npm run dev
 ```
 
-Open `http://127.0.0.1:4173/` and switch language in the header. Without keys, sample mode remains available and the AI status accurately says it is not configured.
+Open `http://127.0.0.1:4173/`. The interface switches between Hong Kong Traditional Chinese and English at one URL. `/zh/` and `/en/` are compatibility entry points. Without usable server authentication, samples still work.
 
-```sh
-npm test
-```
+## AI configuration
 
-## Configure real AI
+The default `AI_PROVIDER=auto` chooses a configured DeepSeek key, then OpenAI key, otherwise Vercel AI Gateway. This is selection at configuration time, not automatic failover after a provider error.
 
-Set private server-side environment variables:
+On Vercel, the function can use the platform-injected runtime OIDC identity. Runtime header identity is only accepted when the host marks itself as Vercel; an arbitrary client header on a local host cannot configure AI. An owner can alternatively set `AI_GATEWAY_API_KEY` privately. Default model: `deepseek/deepseek-v4.1-flash-1017`, verified against the official model catalog on 2026-11-03. Do not put keys or OIDC tokens in browser code or public GitHub.
 
 ```text
-AI_PROVIDER=deepseek
-DEEPSEEK_API_KEY=<your private key>
-DEEPSEEK_MODEL=deepseek-flash
-APP_ACCESS_CODE=<a private pilot code of at least 12 characters>
+AI_PROVIDER=auto
+AI_ENABLED=true
+AI_GATEWAY_MODEL=deepseek/deepseek-v4.1-flash-1017
 AI_LIVE_SEARCH=true
-AI_MAX_REQUESTS_PER_HOUR=20
+AI_MAX_REQUESTS_PER_HOUR=5
+AI_MAX_TOTAL_REQUESTS_PER_HOUR=60
 ```
 
-The default alias was verified in official docs on 2026-11-03 as DeepSeek-V4.1-Flash-1017. To use the documented Pro alternative, set `DEEPSEEK_MODEL=deepseek-v4-pro`. Availability and billing depend on the provider account; recheck official docs before changing the model.
+For direct DeepSeek set `AI_PROVIDER=deepseek` and `DEEPSEEK_API_KEY`. For direct OpenAI set `AI_PROVIDER=openai` and `OPENAI_API_KEY`. Model keys stay server-side. See [official DeepSeek setup steps](docs/deepseek-setup-zh.md). `APP_ACCESS_CODE` is no longer used; teachers do not need a code. `AI_ENABLED=false` is the owner’s off switch.
 
-DeepSeek makes one Search API request and one model request for a successful planning operation. Search results are restricted to selected educational / official domains before use. Search failure stops the operation instead of masquerading as a successful live search. Returned sources indicate whether content is a reviewed summary, page excerpt, search summary, or metadata. Citation membership checks do not prove that every claim is entailed by a source; teacher review is required.
+## Free access and operating costs
 
-Optional GPT alternative: set `AI_PROVIDER=openai`, `OPENAI_API_KEY`, and `OPENAI_MODEL=gpt-6.1-sol`. It uses Responses API web search followed by JSON generation. Title-only web discoveries cannot be cited as evidence findings; the curated reviewed summaries remain available. No automatic cross-provider failover sends user data to a second provider.
+Teachers are not charged. Inference may consume the owner's provider credit. Vercel documents limited recurring credits for eligible free-tier accounts; eligibility and balances must be checked on the actual account. Buying credit changes free-tier eligibility. No code in this project purchases credits or configures automatic top-ups.
 
-## Publish
+Before enabling public use, check provider budgets and disable any unwanted automatic top-up. The IP and shared counters are in memory **per running instance**, not durable global quotas or hard spend caps. Multi-instance deployment can exceed these counters in aggregate. Larger usage needs durable quota enforcement and platform controls. Do not promise unlimited free AI.
 
-See [deployment instructions](docs/deployment.md). Publish source to a public GitHub repository, then import that repository into Vercel. This is the standard GitHub → Vercel workflow. The private Sites prototype is a separate preview; static Sites hosting alone does not run the Vercel API function.
+## Research and privacy
 
-## Product boundaries
+Gateway retrieval only fetches the two fixed HTTPS URLs in the curated library, rejects redirects, caps response size, strips scripts and markup, and labels returned text as an excerpt. It is live page retrieval, not a whole-web literature search. If both source pages block retrieval, real AI generation uses the reviewed summaries and explicitly marks live retrieval as unsuccessful; it never fabricates search success. Direct providers keep their documented search routes. Sources and drafts still require teacher review.
 
-- Focus: classroom participation and discussion, not all teaching problems.
-- Four age bands; teacher judgement is needed for individual learners.
-- Browser-local records, not cloud accounts or cross-device sync.
-- Saved original content is not automatically translated by changing the UI language.
-- The curated library contains two EEF reviews. Source age, population, outcome measures and limitations are visible.
-- Activities are proposals, not validated interventions or official curriculum certification.
-- A local reflection does not establish learning gains or causality.
+Classroom descriptions, page text and observations are untrusted model input. No pupil-identifying details are needed. Consent is required before generation, with separate confirmation for reflection analysis. Local observations do not establish causality or learning gains. Existing browser records and old-name backups remain readable; moving domains requires backup import.
 
-## Privacy and operations
+## Deployment and links
 
-Do not submit pupil-identifying details. AI submissions send classroom descriptions or explicitly confirmed reflections to the configured provider. Third-party data terms apply. Provider keys remain server-side. The teacher pilot code is stored for the browser session, not the model API key.
+Follow [deployment instructions](docs/deployment.md). The clean source export excludes `.git`, `.openai`, `.env.local`, credentials and user records.
 
-An owner-set pilot code is required before billable calls. A bounded in-memory limiter reduces accidental repeated requests **per running instance**; it is not a distributed quota or hard spend cap. For a wider public service, use platform-level rate limits, provider spend controls, proper accounts, and a durable distributed quota before opening paid access broadly. Do not publish a live API key without access control.
+## Primary references
 
-Do not log request bodies or secrets. `.env*`, `.vercel`, and local artifacts are excluded from Git. When publishing to GitHub, also exclude the private Sites `.openai` identity directory and `.git` history; use a clean source export.
+- [Vercel Gateway authentication](https://vercel.com/docs/ai-gateway/authentication-and-byok)
+- [Vercel runtime OIDC](https://vercel.com/docs/oidc)
+- [Gateway credit and pricing](https://vercel.com/docs/ai-gateway/pricing)
+- [DeepSeek V4.1 Flash on Gateway](https://vercel.com/changelog/deepseek-v4-1-flash-now-available-on-ai-gateway)
+- [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html)
+- [EEF collaborative learning](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/collaborative-learning-approaches)
+- [EEF oral language interventions](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/oral-language-interventions)
 
-## Evidence and documentation
-
-- [EEF collaborative learning review](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/collaborative-learning-approaches)
-- [EEF oral language review](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/oral-language-interventions)
-- [DeepSeek models and API](https://api-docs.deepseek.com/)
-- [DeepSeek Search & Fetch](https://api-docs.deepseek.com/guides/search/)
-- [OpenAI web search](https://developers.openai.com/api/docs/guides/tools-web-search)
-- [Vercel Node.js functions](https://vercel.com/docs/functions/runtimes/node-js)
-
-This project is independent and has no endorsement from these organisations. No open-source licence has been selected yet; public visibility alone does not grant a software licence. Review licensing before distributing derivative works.
+Independent prototype, without official endorsement. Public visibility alone does not grant an open-source licence.
