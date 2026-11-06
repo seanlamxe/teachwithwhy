@@ -13,3 +13,5 @@ node_modules/
 # Generated from pinned dependencies by build
 dist/vendor/
 dist/docx-archive.js
+
+dist/icons/
