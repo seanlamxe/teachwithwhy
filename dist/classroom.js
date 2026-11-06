@@ -1,0 +1,24 @@
+// Common starting points, not a claim of official curriculum alignment.
+const label=(hk,cn,en)=>({zh:hk,'zh-CN':cn,en});
+export const curricula={hk:label('香港課程','香港课程','Hong Kong'),mainland:label('內地課程','大陆课程','Mainland China'),international:label('國際課程','国际课程','International')};
+const subjectNames={
+ chinese:label('中國語文','语文','Chinese language'),english:label('英國語文','英语','English language'),math:label('數學','数学','Mathematics'),
+ science:label('科學','科学','Science'),primaryScience:label('小學科學','小学科学','Primary Science'),humanities:label('小學人文','小学人文','Primary Humanities'),general:label('常識（按校本安排）','常识（按学校安排）','General Studies (school arrangements)'),
+ putonghua:label('普通話','普通话','Putonghua'),music:label('音樂','音乐','Music'),art:label('視覺藝術','美术','Visual Arts'),pe:label('體育','体育与健康','Physical Education'),
+ history:label('歷史','历史','History'),chineseHistory:label('中國歷史','中国历史','Chinese History'),geo:label('地理','地理','Geography'),physics:label('物理','物理','Physics'),chemistry:label('化學','化学','Chemistry'),biology:label('生物','生物学','Biology'),
+ citizenship:label('公民與社會發展','公民与社会发展','Citizenship and Social Development'),economics:label('經濟','经济学','Economics'),business:label('企業、會計與財務概論','企业、会计与财务概论','Business, Accounting and Financial Studies'),
+ ict:label('資訊及通訊科技','信息科技','Information Technology'),technology:label('設計與科技','设计与技术','Design and Technology'),ethics:label('道德與法治','道德与法治','Ethics and Rule of Law'),politics:label('思想政治','思想政治','Ideological and Political Education'),labour:label('勞動','劳动','Labour Education'),practice:label('綜合實踐活動','综合实践活动','Integrated Practical Activities'),
+ language:label('語言與文學','语言与文学','Language and Literature'),additionalLanguage:label('語言習得／外語','语言习得／外语','Language Acquisition / Additional Language'),individuals:label('個人與社會／人文','个人与社会／人文','Individuals and Societies / Humanities'),arts:label('藝術','艺术','Arts'),design:label('設計／電腦科學','设计／计算机科学','Design / Computer Science'),wellbeing:label('體育與健康','体育与健康','Physical and Health Education'),tok:label('知識論／研究專題','知识论／研究专题','Theory of Knowledge / Research Project'),other:label('其他／校本科目','其他／校本科目','Other / school-based subject')
+};
+const lists={
+ hk:{primary:['chinese','english','math','primaryScience','humanities','general','putonghua','music','art','pe'],junior:['chinese','english','math','science','chineseHistory','history','geo','ict','technology','music','art','pe'],senior:['chinese','english','math','citizenship','physics','chemistry','biology','history','chineseHistory','geo','economics','business','ict','art','music','pe']},
+ mainland:{primary:['chinese','math','english','ethics','science','ict','labour','music','art','pe','practice'],junior:['chinese','math','english','ethics','history','geo','physics','chemistry','biology','ict','labour','music','art','pe','practice'],senior:['chinese','math','english','politics','history','geo','physics','chemistry','biology','ict','technology','music','art','pe','labour']},
+ international:{primary:['language','additionalLanguage','math','science','individuals','arts','design','wellbeing'],junior:['language','additionalLanguage','math','science','individuals','arts','design','wellbeing'],senior:['language','additionalLanguage','math','physics','chemistry','biology','history','geo','economics','business','design','arts','tok','wellbeing']}
+};
+export function getSubjects(curriculum='hk',level='upper',lang='zh'){const list=lists[curriculum]||lists.hk;return [...list[level==='lower'||level==='upper'?'primary':level]||list.primary,'other'].map(id=>{const names=curriculum==='mainland'?{chinese:label('語文','语文','Chinese language'),english:label('英語','英语','English'),pe:label('體育與健康','体育与健康','Physical Education and Health'),ict:label('信息科技','信息科技','Information Technology'),art:label('美術','美术','Art')}:curriculum==='hk'?{chinese:label('中國語文','中国语文','Chinese language'),english:label('英國語文','英国语文','English language'),pe:label('體育','体育','Physical Education'),ict:label('資訊及通訊科技','资讯及通讯科技','Information and Communication Technology'),art:label('視覺藝術','视觉艺术','Visual Arts')}:{};return(names[id]||subjectNames[id])[lang]||subjectNames[id].zh;});}
+export function getStages(curriculum='hk',lang='zh'){
+ const hk={lower:label('初小 · 小一至小三','初小 · 小一至小三','Lower primary · P1–P3'),upper:label('高小 · 小四至小六','高小 · 小四至小六','Upper primary · P4–P6'),junior:label('初中 · 中一至中三','初中 · 中一至中三','Junior secondary · S1–S3'),senior:label('高中 · 中四至中六','高中 · 中四至中六','Senior secondary · S4–S6')};
+ const other={lower:label('小學低年級','小学低年级','Lower primary'),upper:label('小學高年級','小学高年级','Upper primary'),junior:label('初中階段','初中阶段','Lower secondary'),senior:label('高中階段','高中阶段','Upper secondary')};
+ return Object.fromEntries(Object.entries(curriculum==='hk'?hk:other).map(([id,x])=>[id,x[lang]||x.zh]));
+}
+export const stageLabel=(draft,lang)=>getStages(draft.curriculum,lang)[draft.level]||'';
