@@ -9,3 +9,7 @@ node_modules/
 
 .openai/
 *.zip
+
+# Generated from pinned dependencies by build
+dist/vendor/
+dist/docx-archive.js
