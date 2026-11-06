@@ -64,3 +64,13 @@ For the simplest owner-configured route, set `AI_PROVIDER=deepseek` and `DEEPSEE
 Install pinned dependencies with the package manager declared in package.json (pnpm). `pnpm install --frozen-lockfile`, `pnpm test`, then `pnpm run build`. The build copies pinned OpenCC/fflate browser modules and licence notices into `dist/vendor`; they are generated and are not committed. No third-party CDN is needed at runtime. The Word worker reads only the bounded main document XML; text is previewed in the browser before consented AI analysis.
 
 Smoke-check all three interface languages, curriculum/stage subjects, a real `.docx` containing body/table text, favorite filtering, prompt reuse, multiple reflection snapshots and backup import/export. Use fictional data for live AI parse/generation checks. Do not upload real pupil data or disclose credentials.
+
+## Complete previews rather than partial uploads
+
+Work on an `internal-*` branch. The tracked `git.deploymentEnabled` rule prevents automatic deployments for those staging branches while files are being synchronised. Once the complete source passes checks, create a `release-*` branch from that exact commit for a single complete preview. Merge that release branch to `main` after preview checks. Production auto-deployment is retained. This avoids failed previews caused by partially uploaded files; it does not suppress error reporting for actual releases.
+
+## Phone Home Screen support
+
+The mobile help strip is the first visible control at widths up to 720px. The guide starts with iPhone Safari and Android Chrome instructions in all three languages. The build generates 180/192/512 PNG icons and the app links a same-origin web manifest with standalone display. No service worker or offline AI is provided. Home Screen installation still requires a browser/device check; responsive desktop QA does not verify a native phone install.
+
+On mobile, all editable controls (including plan text and shortcut names) use at least 16px text to reduce iOS focus-triggered zoom. The viewport keeps user zoom enabled. Verify actual Safari keyboard behaviour on a phone; responsive desktop testing can verify computed sizes but cannot reproduce native iOS keyboard zoom.

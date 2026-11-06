@@ -1,6 +1,29 @@
 # TeachWithWhy · User Guide
 
-Version 0.5 · Hong Kong Traditional Chinese, Simplified Chinese and English · Primarily desktop
+Version 0.5.1 · Hong Kong Traditional Chinese, Simplified Chinese and English · Primarily desktop
+
+## Phone quick start: add to your Home Screen
+
+On mobile, User guide and Add to Home Screen stay at the top. Adding an icon lets you open the site like an app without downloading an installation package. AI generation still needs the internet.
+
+**iPhone (Safari)**
+
+1. Open this website in Safari. From WeChat or another in-app browser, copy the URL and open it in Safari.
+2. Tap Share (the upward arrow). Some layouts place it inside the page menu or More.
+3. Choose Add to Home Screen. Turn on Open as Web App if that option appears.
+4. Confirm the name and tap Add. Use the Home Screen icon next time.
+
+If the option is missing, use Edit Actions at the bottom of the sharing sheet to add it. See [Apple’s instructions](https://support.apple.com/guide/iphone/iphea86e5236/ios).
+
+**Android (Chrome)**
+
+1. Open this website in Chrome.
+2. Open the ⋮ menu and look for Add to Home screen or Install app.
+3. Follow the prompts to install or create/add a shortcut, then open the icon.
+
+Other Android browsers may offer Add to desktop or a similar option. Menu names and support vary; the regular website works without adding it. See [Chrome’s instructions](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid).
+
+Adding an icon does not change the URL or fix network connectivity. Records remain in the current browser or web app; browsers, Home Screen apps and domains may not share storage. Download a backup before switching and import it if needed. You do not need to clear browsing data.
 
 ## 1. Choose the curriculum context
 

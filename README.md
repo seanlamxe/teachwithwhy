@@ -2,7 +2,13 @@
 
 A free teaching-design workspace in Hong Kong Traditional Chinese, Simplified Chinese and English for primary and secondary teachers across Hong Kong, mainland and international curriculum contexts. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
 
-## Version 0.5
+## Version 0.5.1
+
+- Mobile text-entry controls use at least 16px text while preserving pinch zoom.
+- Mobile User guide and Home Screen instructions stay at the top. iPhone/Android setup is included in all three guides.
+- A same-origin web manifest and generated app icons support Home Screen launch; AI still requires connectivity.
+- Internal staging branches no longer trigger incomplete preview deployments. Release branches and main still deploy.
+
 
 - Import `.docx` body/table text locally (5 MB / 20,000 characters), review and consent, then let AI suggest classroom fields before applying. No original file upload or OCR.
 - Hong Kong, mainland and international subject starting points with stage-specific choices and custom school subjects.
