@@ -1,8 +1,16 @@
 # TeachWithWhy · 教得有據
 
-A free, bilingual teaching-design workspace for Hong Kong primary and secondary teachers. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
+A free teaching-design workspace in Hong Kong Traditional Chinese, Simplified Chinese and English for primary and secondary teachers across Hong Kong, mainland and international curriculum contexts. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
 
-## Version 0.4
+## Version 0.5
+
+- Import `.docx` body/table text locally (5 MB / 20,000 characters), review and consent, then let AI suggest classroom fields before applying. No original file upload or OCR.
+- Hong Kong, mainland and international subject starting points with stage-specific choices and custom school subjects.
+- Favorite saved activities, filter them, and preserve changed reflection snapshots with earlier AI suggestions.
+- Select up to three past reflections to inform a new plan; contextual follow-up is explicit and does not train a model.
+- Save up to 30 custom prompt shortcuts. Version 3 backups include prompts, favorites and feedback, with older-backup support.
+- Three-language in-page and downloadable guides are updated together.
+
 
 - The homepage is the working form: year group, subject, topic, time, class size, prior learning/difficulties, goal and support. Original context questions stay visible. Generate directly without a mandatory strategy-comparison step.
 - A draft preserves the teacher’s goal and contains its alignment rationale, a readiness check, timed sequence, teacher prompts, a pupil task, a goal-aligned formative check, a recording method and editable keep/adapt/change criteria. Teachers can edit, copy, print and save it.
@@ -10,22 +18,23 @@ A free, bilingual teaching-design workspace for Hong Kong primary and secondary 
 - Free teacher access without accounts, subscriptions, API keys or pilot codes. The owner configures a provider once.
 - DeepSeek through Vercel AI Gateway, with project identity authentication where available; direct DeepSeek and OpenAI integrations remain supported.
 - Gateway mode retrieves the fixed reviewed EEF pages live. Direct-provider modes use web search. Source type, limitations and actual AI generation metadata are explicit.
-- Browser-local records, PDF printing, bilingual guides and old-backup compatibility.
+- Browser-local records, PDF printing, three-language guides and old-backup compatibility.
 
 **Verification:** provider contracts, consent, limits, error handling and retrieval are covered by tests with mock model responses. Production smoke check on 2026-11-05 successfully generated a Chinese-language, P5, 30-pupil, 12-minute activity using DeepSeek Flash and live search (one accepted source), with fictional class data. This verifies connectivity and output handling, not classroom effectiveness or general model quality. Account credit is still required.
 
 ## Run and check
 
-Node.js 22; no external runtime dependencies.
+Node.js 22. Pinned OpenCC and fflate browser dependencies are installed at build time; no external CDN is used.
 
 ```sh
 cp .env.example .env.local
-npm run build
-npm test
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm test
+pnpm run dev
 ```
 
-Open `http://127.0.0.1:4173/`. The interface switches between Hong Kong Traditional Chinese and English at one URL. `/zh/` and `/en/` are compatibility entry points. Without usable server authentication, samples still work.
+Open `http://127.0.0.1:4173/`. The interface switches between Hong Kong Traditional Chinese, Simplified Chinese and English at one URL. `/zh/`, `/zh-CN/` and `/en/` are compatibility entry points. Without usable server authentication, samples still work.
 
 ## AI configuration
 

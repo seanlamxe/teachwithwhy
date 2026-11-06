@@ -47,3 +47,15 @@ Successful plans contain `origin: ai`, `provider`, `model`, `generatedAt`, goal,
 For `action: reflect`, include the same draft plus `reflection` with `observation`, `difficulty`, `next` and `participation`. The UI also includes `planContext` (goal, exitCheck, evaluation) and asks for separate confirmation before sending reflection notes. These fields are treated as untrusted data.
 
 Typical errors: missing authentication or disabled AI (503), invalid input/consent (400), usage limit (429), provider authentication/credit/network or invalid output (502). Samples run in the browser and remain available without AI. Rate counters are per instance, not durable global budgets.
+
+## Version 0.5 additions
+
+`lang` also accepts `zh-CN` (Simplified Chinese). Drafts support `curriculum` (`hk`, `mainland`, `international`; legacy default `hk`), `curriculumNote` (400 characters), `customPrompt` (1,500) and reviewed `documentContext` (20,000). The original Word is never sent to the server. Document text is untrusted context, never system instructions.
+
+`action: parse` accepts `documentText` (1–20,000 characters), `lang` and explicit `consent: true`, without requiring a completed classroom draft. It makes one model request without web search. `suggestion` returns bounded topic, problem, goal, subject, programme details, class size, time and known stage/curriculum enums. Missing or invalid optional fields are null; no complete result is silently invented. The teacher reviews before applying. Parsed text is not stored on this server.
+
+For generation, optional `feedbackContext` contains at most three selected past-activity excerpts: topic, goal, observation, difficulty, next and decision. The server bounds each field. A plan using these excerpts must include `feedbackFollowUp` and reports `feedbackCount`. Unselected local records are not sent. This is contextual reuse, not model training.
+
+For reflection analysis, `previousReflections` accepts up to three older snapshots for the same activity. The browser omits the imported document text from the reflection draft; the goal, criteria and reflection excerpts provide context. Teachers separately confirm sending these notes.
+
+Favorites, prompt shortcuts and append-only reflection snapshots remain in the browser. Version 3 backups include `presets` plus records containing `favorite` and `feedbackHistory`; the importer preserves old backups and existing IDs. Keys and raw Word files are excluded.
