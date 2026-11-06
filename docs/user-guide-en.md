@@ -1,43 +1,53 @@
-# TeachWithWhy · 教得有據 — User Guide
+# TeachWithWhy · User Guide
 
-Version 0.4 · Hong Kong primary and secondary teachers · Designed primarily for desktop
+Version 0.5 · Hong Kong Traditional Chinese, Simplified Chinese and English · Primarily desktop
 
-## Three steps from topic to activity
+## 1. Choose the curriculum context
 
-1. **Describe the lesson:** the homepage is the form. Complete the visible fields for year group, subject, class size, time, topic, prior learning and difficulties, and an observable learning goal. Choose support needs. These original questions are retained.
-2. **Generate and adapt:** confirm there are no pupil-identifying details and consent to AI processing, then generate directly. No library browsing or strategy comparison is required.
-3. **Use the activity:** check and edit the text, copy it into your lesson plan, print/save as PDF, or save it. Reflection is optional.
+The original planning questions remain: curriculum context, stage, subject, class size, time, topic, prior learning/difficulty, observable goal, approach and support.
 
-All current features are free to teachers. No account, trial code or personal model key is needed. The site owner connects the model once; service credit and usage limits apply.
+Hong Kong, mainland China and international contexts offer different common subject starting points, adjusted by stage. These are not complete official lists or accreditation. A custom subject takes priority. Enter the actual year and programme (for example P5, Grade 7, IB MYP, Cambridge or AP); international education is not one syllabus. The AI preserves your stated goal; review alignment between the goal, task and formative assessment.
 
-## What is included?
+## 2. Import Word (optional)
 
-Your original learning goal, a rationale linking the task to it, a readiness check, timed sequence, teacher questions and sentence frames, a pupil task, a goal-aligned check for understanding, a manageable recording method, and editable criteria for retaining, adapting or changing the approach. Materials, support and expandable research notes are included. These are drafts requiring teacher review. The current focus is participation, discussion and explaining ideas, rather than a complete school curriculum system.
+1. Expand Word import and choose **.docx, up to 5 MB**. Save legacy .doc as .docx in Word first. Encrypted files are unsupported.
+2. The browser extracts body and table text, up to **20,000 characters**. The original file is not uploaded. Images, scans, comments, headers/footers and deleted revision text are excluded. Pasting text is also supported.
+3. Review and remove identifying data, consent, then select **Analyse with AI**. Only reviewed text goes to the configured model.
+4. Review the analysis before **Confirm & apply**. Identified fields replace their current counterparts; fill absent details yourself. AI should not invent pupil counts, difficulties or curriculum alignment. Reanalyse edited text before applying old results.
+5. Applied text is used in activity generation and saved with that browser-local activity. You can remove it on the homepage.
 
-## Worked example
+There is no OCR. For unreadable or long files, save a shorter .docx or paste relevant passages. Text extraction does not reproduce Word formatting.
 
-Choose Upper primary and Chinese language, enter a story-character topic and 12 minutes, describe the pupils’ prior learning and difficulty, then enter an observable goal. After generation, the teacher may adapt a question to ask which action supports a view of a character, then use a one-sentence exit response to check each pupil’s reasoning.
+## 3. Create prompt shortcuts
 
-This describes the workflow; it is not proof of an actual API generation or an evaluated classroom intervention.
+Write your preference in My teaching prompt, such as modelling before independent responses with existing exercise books. Save it as a named shortcut. Click the name next time to fill the prompt box, then edit or generate. This does not replace the goal. Save up to 30 shortcuts; × deletes one. Shortcuts are browser-local and included in backups.
 
-## Where is the research?
+## 4. Generate, edit and favorite
 
-There is no separate static library. Expand Why this approach? inside an activity. It separates the supported finding, the proposed classroom adaptation and its limitations, with a source link. A source review does not validate the particular generated activity.
+Confirm no identifying data is included and consent to AI processing. Generate, then review the alignment rationale, readiness check, timed steps, teacher prompts, pupil task, materials, support, formative check and keep/adapt/change criteria. Edit, copy, print/save PDF or save the activity.
 
-## AI and samples
+Research findings, proposed adaptations and limitations are separated inside the output. A research review does not validate this exact generated activity.
 
-Explore a sample uses fixed rules, is labelled as not AI output, and consumes no model credit. Genuine AI outputs identify the model, time and source mode. AI needs usable server authentication and account credit.
+Click the heart on a saved activity to favorite it. Favorites appear first and can be filtered. Removing a favorite does not delete the activity or its reflections and uses no AI credit.
 
-Direct DeepSeek/OpenAI modes can search the web. Gateway mode attempts live retrieval of the curated research pages. If those pages block retrieval, generation uses reviewed summaries and explicitly marks live retrieval as unsuccessful. Credit and model failures are shown honestly; samples never masquerade as AI output.
+## 5. Keep reflections and follow up with AI
 
-## Records, language and privacy
+Record duration, participation, observations against the goal, difficulties, next steps and your own decision.
 
-Saved activities supports reopening, reflection and backup downloads. Records stay in this browser without cross-device sync. Old-name backups are accepted. Domains do not share storage; import your backup when moving domains. Deleting an activity also deletes its reflection.
+- **Save reflection:** changed content adds a snapshot without overwriting earlier reflections. Identical saves are not duplicated. Expand the log to view earlier text and AI suggestions at the time. Each activity supports up to 200 snapshots; download a backup when full.
+- **Ask AI for next steps:** separate confirmation sends the current reflection, up to three previous reflections for this activity, and the goal/check criteria. It does not resend the imported Word text. AI suggestions remain separate from teacher observations.
+- **Use past feedback in a new activity:** select up to three saved activities in the homepage reflection selector. Only limited excerpts of their goal, latest observation, difficulty, next step and decision are sent. The generated output explains the adaptation. Unselected history is not used.
 
-Switch interface language at the same URL. Saved original activity text is not automatically translated.
+This is contextual follow-up, **not automatic model training, fine-tuning or sharing between teachers**. Provider data policies apply separately. Participation is not proof of understanding and one observation cannot establish impact. Editable criteria are suggestions, not validated effectiveness cut-offs. Teachers decide.
 
-Do not include pupil names, contact details or diagnostic reports. AI processes the content you consent to send; reflection analysis asks for separate confirmation. Provider data policies apply. The owner configures credentials privately, not through a teacher-facing field. Free teacher access does not mean unlimited free inference; account credit and provider budgets must be checked.
+## 6. Language, backup and privacy
 
-## Pedagogical design
+Switch between Hong Kong Traditional Chinese, Simplified Chinese and English at the same URL. Current input is retained; saved activity, reflection and custom prompt text is not automatically translated.
 
-Begin with the intended learning goal, decide what pupil work will show understanding, then plan the sequence and scaffolds. The AI preserves the teacher’s stated goal. Overly broad goals should be flagged rather than silently replaced. Reflection shows the planned decision criteria; these are suggestions, not validated cut-offs. Participation is not proof of understanding and one observation does not establish impact. The feedback-and-adaptation approach references [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html); it does not imply endorsement.
+Activities, favorites, prompts, imported text and reflections stay in this browser without automatic sync across devices or domains. Clearing browser data can remove records. Download all records in Saved activities; the backup includes these items and no API key. Older backups are accepted; existing IDs are kept. Imports are limited to 8 MB. Keep your backup private.
+
+Exclude pupil names, contact information and diagnostic reports and follow your school’s data rules. Teachers need no account, API key or access code. Features are currently free to teachers; inference consumes owner credit and has temporary limits. Credentials remain server-side.
+
+Fixed samples are labelled as not AI output and consume no model credit. Genuine outputs show model, time and source mode; errors never produce a sample disguised as AI.
+
+The feedback-and-adaptation design references [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html), without endorsement. The current focus is participation, discussion and explaining ideas, rather than a complete curriculum or school administration system.
