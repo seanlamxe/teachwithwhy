@@ -59,3 +59,13 @@ For generation, optional `feedbackContext` contains at most three selected past-
 For reflection analysis, `previousReflections` accepts up to three older snapshots for the same activity. The browser omits the imported document text from the reflection draft; the goal, criteria and reflection excerpts provide context. Teachers separately confirm sending these notes.
 
 Favorites, prompt shortcuts and append-only reflection snapshots remain in the browser. Version 3 backups include `presets` plus records containing `favorite` and `feedbackHistory`; the importer preserves old backups and existing IDs. Keys and raw Word files are excluded.
+
+## v0.6 flow contract
+
+`draft` accepts bounded optional `textbook` (300), `classContext` (1000), `knowledgePoints` (1200). `topic` and `goal` remain required; lesson-specific `problem` is optional and absence must not imply a diagnosed difficulty. Textbook metadata is not full-text access.
+
+New plans require `knowledgePath` (2–8 strings) and each stage has `concept`, `text`, `bridge`, `check`, and positive integer `minutes`. Durations total the selected activity time; adjustments are flagged. The teacher goal remains verbatim. Existing stored plans need no migration or fabricated content.
+
+Optional `draft.reuseContext` sends only the prior title, goal and up to seven bounded stage summaries to inference. No parent record identifier is sent to the model. Current goal takes priority. `revisionNotes` (1–3 concrete changes) is required on reuse and cleared on new plans. Selected latest reflection excerpts remain explicit, limited to three. The source document is included only when it remains visibly attached to the new draft. Contextual adaptation is not model training.
+
+Setups and backup version 4 remain client-side. Named setups contain only common teaching context; topic, goal, per-lesson problem, prompt, documents, feedback IDs and consent are excluded.

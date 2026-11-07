@@ -2,7 +2,7 @@
 
 A free teaching-design workspace in Hong Kong Traditional Chinese, Simplified Chinese and English for primary and secondary teachers across Hong Kong, mainland and international curriculum contexts. Describe your class and learning goal, generate an aligned activity and formative check, and use observations to decide what to retain or change.
 
-## Version 0.5.1
+## Version 0.6.0
 
 - Mobile text-entry controls use at least 16px text while preserving pinch zoom.
 - Mobile User guide and Home Screen instructions stay at the top. iPhone/Android setup is included in all three guides.
@@ -14,11 +14,11 @@ A free teaching-design workspace in Hong Kong Traditional Chinese, Simplified Ch
 - Hong Kong, mainland and international subject starting points with stage-specific choices and custom school subjects.
 - Favorite saved activities, filter them, and preserve changed reflection snapshots with earlier AI suggestions.
 - Select up to three past reflections to inform a new plan; contextual follow-up is explicit and does not train a model.
-- Save up to 30 custom prompt shortcuts. Version 3 backups include prompts, favorites and feedback, with older-backup support.
+- Save up to 30 custom prompt shortcuts. Version 4 backups include teaching setups, prompts, favorites and feedback, with older-backup support.
 - Three-language in-page and downloadable guides are updated together.
 
 
-- The homepage is the working form: year group, subject, topic, time, class size, prior learning/difficulties, goal and support. Original context questions stay visible. Generate directly without a mandatory strategy-comparison step.
+- The homepage is the working form: year group, subject, topic, time, class size, prior learning/difficulties, goal and support. Original context questions remain in expandable settings. Generate directly without a mandatory strategy-comparison step.
 - A draft preserves the teacher’s goal and contains its alignment rationale, a readiness check, timed sequence, teacher prompts, a pupil task, a goal-aligned formative check, a recording method and editable keep/adapt/change criteria. Teachers can edit, copy, print and save it.
 - Only Design an activity and Saved activities are in the main navigation. Research findings, their classroom adaptation and limitations are expandable inside each output; there is no standalone static library.
 - Free teacher access without accounts, subscriptions, API keys or pilot codes. The owner configures a provider once.
@@ -86,3 +86,7 @@ Follow [deployment instructions](docs/deployment.md). The clean source export ex
 - [EEF oral language interventions](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/oral-language-interventions)
 
 Independent prototype, without official endorsement. Public visibility alone does not grant an open-source licence.
+
+## v0.6 · Reusable classroom planning
+
+Browser-local named class/textbook setups retain common context without lesson content or consent. New AI output includes a knowledge progression and stage-level concept/task/bridge/check. The default view, copy and print are concise; full editable pedagogy and evidence remain in details. Reuse & improve clones a saved activity, offers its latest reflection for explicit selection, preserves the source and returns concrete revision notes. Backup v4 includes setups and accepts older backups. No cross-device sync or automatic model training.
