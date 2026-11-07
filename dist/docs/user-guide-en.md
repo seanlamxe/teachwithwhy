@@ -1,6 +1,15 @@
 # TeachWithWhy · User Guide
 
-Version 0.5.1 · Hong Kong Traditional Chinese, Simplified Chinese and English · Primarily desktop
+Version 0.6.0 · Hong Kong Traditional Chinese, Simplified Chinese and English · Primarily desktop
+
+## New in v0.6: reusable setups and classroom flow
+
+- **Remember once:** class, curriculum, exact year, textbook/edition, pupils, time, usual needs and resource constraints are retained in this browser. Save up to 30 named setups and explicitly update one when its settings change. Switching setups keeps the current topic and goal. The textbook name does not supply the book’s content.
+- **Change the lesson:** enter the topic and observable goal. Add knowledge points to connect, keywords and lesson-specific difficulties if useful. All original planning fields remain in expandable sections. Topic, goal, document text, feedback choices and consent are never stored as common defaults.
+- **Read the flow first:** knowledge connections, timed stage tasks, what to check and how each stage leads to the next. Optional teacher questions, editable full notes and evidence are inside details. Apply edits to refresh the flow. Copy/print defaults to the concise flow; full versions are available inside details. Older activities keep their original content.
+- **Reuse & improve:** start from a saved activity; the original is retained and the generated plan saves as a new activity. Its latest reflection is preselected if present; review or deselect it before consenting. AI receives the old flow summary, current lesson context and only selected reflection excerpts. The result lists specific changes, not proven learning gains.
+- **Back up:** version 4 backups include named setups, recent settings, favorites, prompts and reflection history. Older backups are accepted and matching local IDs are retained. Setups do not sync between devices; no model training occurs.
+
 
 ## Phone quick start: add to your Home Screen
 
@@ -73,4 +82,4 @@ Exclude pupil names, contact information and diagnostic reports and follow your 
 
 Fixed samples are labelled as not AI output and consume no model credit. Genuine outputs show model, time and source mode; errors never produce a sample disguised as AI.
 
-The feedback-and-adaptation design references [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html), without endorsement. The current focus is participation, discussion and explaining ideas, rather than a complete curriculum or school administration system.
+The feedback-and-adaptation design references [EDB Assessment for Learning](https://www.edb.gov.hk/en/curriculum-development/assessment/about-assessment/assessment-for-learning.html), without endorsement. The tool supports topic-specific activities, knowledge connections and learning checks; it is not a complete curriculum or school administration system.
